@@ -1,0 +1,38 @@
+package main;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author secant theta
+ */
+public class SpecialUpperIncompleteGammaFunction {
+    
+    public static void main(String[] args) {
+        ArrayList<Integer> M = new ArrayList<>();
+        M.add(1);
+        M.add(1);
+        M.add(2);
+        System.out.println(M.get(0));
+        System.out.println(M.get(1));
+        System.out.println(M.get(2));
+        
+        for (int n=2; n<8; n++) {
+            for (int j=0; j<=n; j++) {
+                switch (j) {
+                    case 0:
+                        M.add(M.get(M.size()-n)*(n));
+                        break;
+                    case 1:
+                        M.add(M.get(M.size()-1)+M.get(M.size()-(n+1)));
+                        break;
+                    default:
+                        M.add(((M.get(M.size()-2)*(j-1)) +
+                                (M.get(M.size()-1)*((n+1) - 2*(j) + 2)))/(n - j + 1));
+                        break;
+                }
+                System.out.println(M.get(M.size()-1));
+            }
+        }
+    }
+}
